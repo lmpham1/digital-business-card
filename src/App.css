@@ -1,38 +1,59 @@
-.App {
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:400,400i,700,700i|Roboto:300,300i,700,700i');
+
+.QR-container {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.left-card {
+  background-color: #7A003C;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.profile {
+  margin-top: 20px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media (width<720px) {
+  .left-card {
+    min-width: 40vw;
   }
-  to {
-    transform: rotate(360deg);
+
+  .qr {
+    width: 80%;
   }
+}
+
+.home {
+  margin: 3rem;
+}
+
+.section {
+  display: flex;
+  justify-content: center;
+}
+
+.login-card {
+  width: 30%;
+  padding-top: 1rem;
+}
+
+.login-form {
+  margin: 2rem;
+}
+
+.login-container {
+  width: 100%;
+  margin: 5rem 0;
+  display: flex;
+  justify-content: center;
+}
+
+.qr {
+  height: "auto";
+  max-width: "100%";
+  width: "40%";
+}
+
+.App {
+  font-family: ‘Roboto’, sans-serif;
 }
