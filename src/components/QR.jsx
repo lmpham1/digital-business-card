@@ -7,7 +7,7 @@ import Overlay from 'react-bootstrap/Overlay';
 import Tooltip from 'react-bootstrap/Tooltip';
 import { useRef, useState } from 'react';
 
-const APP_URL = process.env.PUBLIC_URL;
+const APP_URL = process.env.ROOT_URL || process.env.REACT_APP_URL;
 
 export default function QR(props) {
   const [isCopied, setIsCopied] = useState(false);
