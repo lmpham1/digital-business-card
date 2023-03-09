@@ -44,13 +44,15 @@ RUN npm run build
 #pull the official nginx:latest base image
 FROM nginx:latest
 
-USER root
-RUN chmod -R g+rwx /var/cache/nginx/client_temp
 
 COPY --from=builder /app/build /usr/share/nginx/html
 
 # Copy the default nginx.conf provided by tiangolo/node-frontend
 COPY --from=pre-build /nginx.conf /etc/nginx/conf.d/default.conf
+
+
+USER root
+RUN chmod -R g+rwx /var/cache/nginx/client_temp
 
 # Containers run nginx with global directives and daemon off
 ENTRYPOINT ["nginx", "-g", "daemon off;"]
