@@ -51,6 +51,6 @@ COPY --from=builder /app/build /usr/share/nginx/html
 COPY --from=pre-build /nginx.conf /etc/nginx/conf.d/default.conf
 
 # Containers run nginx with global directives and daemon off
-ENTRYPOINT ["nginx", "-g", "daemon off;"]
+ENTRYPOINT ["sudo", "nginx", "-g", "daemon off;"]
 
 EXPOSE 3000
