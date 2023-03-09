@@ -13,7 +13,7 @@ export default function QR(props) {
   const [isCopied, setIsCopied] = useState(false);
   const target = useRef(null);
   const user = props.user
-  const url = `${APP_URL}/profile/${user.id}`
+  const url = `${APP_URL}profile/${user.id}`
 
   const handleCopyClicked = () => {
     navigator.clipboard.writeText(url);
