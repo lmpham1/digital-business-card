@@ -30,9 +30,6 @@ WORKDIR /app
 #copies package.json and package-lock.json to Docker environment
 COPY package*.json /app/
 
-USER root
-RUN chmod -R g+rwx /var/cache/nginx/client_temp
-
 # Installs all node packages
 
 RUN --mount=type=cache,target=/root/.npm,id=npm npm i
