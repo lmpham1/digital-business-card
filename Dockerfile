@@ -29,6 +29,8 @@ COPY package*.json /opt/app-root/src/
 
 RUN --mount=type=cache,target=/root/.npm,id=npm npm i
 
+RUN chmod -R 775 /opt/app-root/src/
+
 # Copies everything over to Docker environment
 COPY . /opt/app-root/src/
 
