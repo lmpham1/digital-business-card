@@ -7,13 +7,13 @@ import Overlay from 'react-bootstrap/Overlay';
 import Tooltip from 'react-bootstrap/Tooltip';
 import { useRef, useState } from 'react';
 
-const APP_URL = window.location.href
+const APP_URL = window.location.protocol + "//" + window.location.hostname + (process.env.REACT_APP_PORT ? ":" + process.env.REACT_APP_PORT : '')
 
 export default function QR(props) {
   const [isCopied, setIsCopied] = useState(false);
   const target = useRef(null);
   const user = props.user
-  const url = `${APP_URL}#/profile/${user.id}`
+  const url = `${APP_URL}/#/profile/${user.id}`
 
   const handleCopyClicked = () => {
     navigator.clipboard.writeText(url);
