@@ -1,7 +1,7 @@
 FROM tiangolo/node-frontend:10 AS pre-build
 
 # Docker instructions are stored here
-FROM node:18.13.0 AS builder
+FROM ubi8/nodejs-18 AS builder
 
 LABEL maintainer="Le Minh Pham <phaml15@mcmaster.ca>"
 LABEL description="Demo for digital business card"
@@ -42,7 +42,7 @@ RUN npm run build
 #Stage 2
 #######################################
 #pull the official nginx:latest base image
-FROM nginxinc/nginx-unprivileged 
+FROM registry.access.redhat.com/ubi9/nginx-120
 
 
 COPY --from=builder /app/build /usr/share/nginx/html
