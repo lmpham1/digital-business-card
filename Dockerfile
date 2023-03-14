@@ -21,21 +21,23 @@ ENV NODE_ENV production
 USER root
 RUN chmod -R g+rwx /opt/app-root/src/
 
+RUN npm install -g yarn -s
+
 # add `/app/node_modules/.bin` to $PATH
 ENV PATH /opt/app-root/src/node_modules/.bin:$PATH
 
 # install app dependencies
 #copies package.json and package-lock.json to Docker environment
-COPY package*.json /opt/app-root/src/
+COPY package*.json yarn.lock /opt/app-root/src/
 
 # Installs all node packages
-
-RUN --mount=type=cache,target=/root/.npm,id=npm npm i
+WORKDIR /opt/app-root/src
+RUN yarn install --network-timeout 100000 --frozen-lockfile
 
 # Copies everything over to Docker environment
-COPY . /opt/app-root/src/
+COPY . .
 
-RUN npm run build
+RUN yarn build
 
 #Stage 2
 #######################################
