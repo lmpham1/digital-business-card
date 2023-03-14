@@ -18,7 +18,8 @@ ENV NPM_CONFIG_COLOR=false
 # Optimize Node.js apps for production
 ENV NODE_ENV production
 
-RUN chmod -R 775 /opt/app-root/src/
+USER root
+RUN chmod -R g+rwx /opt/app-root/src/
 
 # add `/app/node_modules/.bin` to $PATH
 ENV PATH /opt/app-root/src/node_modules/.bin:$PATH
