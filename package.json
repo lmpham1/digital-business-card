@@ -2,7 +2,7 @@
   "name": "digital-business-card",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://lmpham1.github.io/digital-business-card",
+  "homepage": ".",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
