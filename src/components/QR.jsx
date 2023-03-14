@@ -7,13 +7,13 @@ import Overlay from 'react-bootstrap/Overlay';
 import Tooltip from 'react-bootstrap/Tooltip';
 import { useRef, useState } from 'react';
 
-const APP_URL = window.location.href//process.env.REACT_APP_URL;
+const APP_URL = window.location.href
 
 export default function QR(props) {
   const [isCopied, setIsCopied] = useState(false);
   const target = useRef(null);
   const user = props.user
-  const url = `${APP_URL}profile/${user.id}`
+  const url = `${APP_URL}#/profile/${user.id}`
 
   const handleCopyClicked = () => {
     navigator.clipboard.writeText(url);
@@ -26,19 +26,21 @@ export default function QR(props) {
       <p>Scan this QR code</p>
       <QRCode value={url} title="test" className='mt-1 mb-3 qr' />
       <p>Or alternatively, share this URL:</p>
-      <InputGroup>
-        <Form.Control type="text" value={url} readOnly />
-        <Button variant="outline-secondary" ref={target} onClick={handleCopyClicked}>
-          Copy
-        </Button>
-        <Overlay target={target.current} show={isCopied} placement="bottom">
-          {(props) => (
-            <Tooltip {...props}>
-              Copied!
-            </Tooltip>
-          )}
-        </Overlay>
-      </InputGroup>
+      <div className='d-flex justify-content-center'>
+        <InputGroup className='alternative-url'>
+          <Form.Control type="text" value={url} readOnly />
+          <Button variant="outline-secondary" ref={target} onClick={handleCopyClicked}>
+            Copy
+          </Button>
+          <Overlay target={target.current} show={isCopied} placement="bottom">
+            {(props) => (
+              <Tooltip {...props}>
+                Copied!
+              </Tooltip>
+            )}
+          </Overlay>
+        </InputGroup>
+      </div>
     </Col>
   )
 }
