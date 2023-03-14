@@ -18,6 +18,8 @@ ENV NPM_CONFIG_COLOR=false
 # Optimize Node.js apps for production
 ENV NODE_ENV production
 
+RUN chmod -R 775 /opt/app-root/src/
+
 # add `/app/node_modules/.bin` to $PATH
 ENV PATH /opt/app-root/src/node_modules/.bin:$PATH
 
@@ -28,8 +30,6 @@ COPY package*.json /opt/app-root/src/
 # Installs all node packages
 
 RUN --mount=type=cache,target=/root/.npm,id=npm npm i
-
-RUN chmod -R 775 /opt/app-root/src/
 
 # Copies everything over to Docker environment
 COPY . /opt/app-root/src/
